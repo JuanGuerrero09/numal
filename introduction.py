@@ -1,9 +1,10 @@
 from typing import Callable
 import numpy as np
 import sympy as smp
-from sympy.core import evalf
 
 narr = [1, 3, 5, 7, 9]
+
+# 1.1 Algorithms
 
 
 def stat_alg(arr):
@@ -45,6 +46,20 @@ def f(x):
     return 1 / x
 
 
-print(stat_alg(narr))
-print(trapezoidal_integral(1, 2, f, 4))
-check_integral(1, 2, f)
+def apprx_root(a, x1, e, Nmax):
+    x0 = x1
+    for i in range(0, Nmax):
+        print(x1)
+        x1 = (x0 + (a / x0)) / 2
+        if abs(x0 - x1) < e:
+            return x1
+        x0 = x1
+    else:
+        return f"Max num of iterations {Nmax} reached, no solution obtained"
+
+
+# print(stat_alg(narr))
+# print(trapezoidal_integral(1, 2, f, 4))
+# print(apprx_root(2, 2, 0.005, 10))
+# check_integral(1, 2, f)
+#
